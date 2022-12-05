@@ -14,7 +14,6 @@ public class Account {
     private String username;
     private String password;
     private String displayname;
-    private ArrayList<Role> roles = new ArrayList<>();
 
     public String getUsername() {
         return username;
@@ -39,14 +38,5 @@ public class Account {
     public void setDisplayname(String displayname) {
         this.displayname = displayname;
     }
-
-    public ArrayList<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(ArrayList<Role> roles) {
-        this.roles = roles;
-    }
-    
-    
+   
 }
