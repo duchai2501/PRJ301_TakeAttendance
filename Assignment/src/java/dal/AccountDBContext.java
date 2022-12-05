@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
-import model.Role;
 
 /**
  *
@@ -19,7 +18,7 @@ import model.Role;
  */
 public class AccountDBContext extends DBContext<Account> {
 
-    public Account get(String username, String password) {
+    public Account getAccount(String username, String password) {
         try {
             String sql = "select a.username,a.displayname,\n"
                     + "r.rid,r.rname\n"
@@ -32,20 +31,18 @@ public class AccountDBContext extends DBContext<Account> {
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
             Account account = null;
-            Role r = new Role();
-            r.setId(-1);
             while (rs.next()) {
-                if (account ==null) {
+                if (account == null) {
                     account = new Account();
                     account.setUsername(username);
                     account.setDisplayname(rs.getString("displayname"));
                 }
             }
-            
-            return null;
+            return account;
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
 
     }
 
