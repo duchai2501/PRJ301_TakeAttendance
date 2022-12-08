@@ -20,12 +20,8 @@ public class AccountDBContext extends DBContext<Account> {
 
     public Account getAccount(String username, String password) {
         try {
-            String sql = "select a.username,a.displayname,\n"
-                    + "r.rid,r.rname\n"
-                    + "from Account a\n"
-                    + "Left join Role_Account ra on a.username = ra.username\n"
-                    + "Left join [Role] r on r.rid = ra.rid\n"
-                    + "Where a.username =? and a.password = ?";
+            String sql = "select username,displayname from Account\n"
+                    + "where username=? and [password]=?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setString(2, password);
