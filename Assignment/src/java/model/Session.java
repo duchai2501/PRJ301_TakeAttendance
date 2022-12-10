@@ -15,7 +15,7 @@ public class Session {
 
     private int id;
     private Group group;
-    private Lecturer lecturer;
+    private String lecid;
     private Room room;
     private TimeSlot slot;
     private Date date;
@@ -39,13 +39,15 @@ public class Session {
         this.group = group;
     }
 
-    public Lecturer getLecturer() {
-        return lecturer;
+    public String getLecid() {
+        return lecid;
     }
 
-    public void setLecturer(Lecturer lecturer) {
-        this.lecturer = lecturer;
+    public void setLecid(String lecid) {
+        this.lecid = lecid;
     }
+
+    
 
     public Room getRoom() {
         return room;

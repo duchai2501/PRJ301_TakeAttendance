@@ -12,21 +12,19 @@ import java.util.ArrayList;
  */
 public class Lecturer {
 
-    private String id;
+    private String lecid;
     private String name;
     private String email;
     private String image;
-    private ArrayList<Group> groups = new ArrayList<>();
-    private ArrayList<Session> sessions = new ArrayList<>();
 
-    public String getId() {
-        return id;
+    public String getLecid() {
+        return lecid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setLecid(String lecid) {
+        this.lecid = lecid;
     }
-
+  
     public String getName() {
         return name;
     }
@@ -51,20 +49,5 @@ public class Lecturer {
         this.image = image;
     }
 
-    public ArrayList<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(ArrayList<Group> groups) {
-        this.groups = groups;
-    }
-
-    public ArrayList<Session> getSessions() {
-        return sessions;
-    }
-
-    public void setSessions(ArrayList<Session> sessions) {
-        this.sessions = sessions;
-    }
 
 }

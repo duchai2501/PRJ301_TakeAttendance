@@ -15,7 +15,7 @@ public class Group {
     private int id;
     private String name;
     private Subject subject;
-    private Lecturer lecturer;
+    private String lecid;
     private ArrayList<Session> sessions = new ArrayList<>();
     private ArrayList<Student> students = new ArrayList<>();
     private String sem;
@@ -45,13 +45,14 @@ public class Group {
         this.subject = subject;
     }
 
-    public Lecturer getLecturer() {
-        return lecturer;
+    public String getLecid() {
+        return lecid;
     }
 
-    public void setLecturer(Lecturer lecturer) {
-        this.lecturer = lecturer;
+    public void setLecid(String lecid) {
+        this.lecid = lecid;
     }
+
 
     public ArrayList<Session> getSessions() {
         return sessions;

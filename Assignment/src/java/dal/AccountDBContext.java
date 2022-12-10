@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
+import model.Lecturer;
 
 /**
  *
@@ -20,7 +21,9 @@ public class AccountDBContext extends DBContext<Account> {
 
     public Account getAccount(String username, String password) {
         try {
-            String sql = "select username,displayname from Account\n"
+            String sql = "select a.username,a.displayname,ISNULL(l.lecid,-1) lecid\n"
+                    + "from Account a\n"
+                    + "left join Lecturer l on l.lecid = a.lecid\n"
                     + "where username=? and [password]=?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
@@ -31,7 +34,13 @@ public class AccountDBContext extends DBContext<Account> {
                 if (account == null) {
                     account = new Account();
                     account.setUsername(username);
-                    account.setDisplayname(rs.getString("displayname"));
+                    account.setDisplayname(rs.getString(2));
+                    String lecid = rs.getString(3);
+                    if (!lecid.equals("-1")) {
+                        LecturerDBContext db = new LecturerDBContext();
+                        Lecturer lecturer = db.getByID(lecid);
+                        account.setLecturer(lecturer);
+                    }
                 }
             }
             return account;
